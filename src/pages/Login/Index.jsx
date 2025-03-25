@@ -128,6 +128,7 @@ export const Login = () => {
                                     color: '#9c27b0', // Etiqueta morada cuando tiene foco
                                 }
                             }}
+                            type="password"
                             margin="normal"
                             required
                             fullWidth

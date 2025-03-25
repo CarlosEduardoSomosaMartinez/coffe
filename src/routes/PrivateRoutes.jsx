@@ -7,6 +7,7 @@ import { Provider } from "../Context/Provider";
 import { Assistants } from "../pages/Assistants/Index";
 import { Channels } from "../pages/Channels/Index";
 import { Bailleys } from "../pages/Bailleys/Index";
+import { PeriodicJobs } from "../pages/PeriodicJobs/Index";
 export const privateRoutes = [
     {
         path: "home",
@@ -81,6 +82,22 @@ export const privateRoutes = [
 
                         index: true,
                         element: <Bailleys /> // Componente para la nueva ruta
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        path: "periodicJobs",
+        element: <Provider url={'periodicjobs'}> <Layout /></Provider>, // Nuevo Provider con URL diferente
+        children: [
+            {
+                element: <ProtectedRouter auth={true} />,
+                children: [
+                    {
+
+                        index: true,
+                        element: <PeriodicJobs /> // Componente para la nueva ruta
                     }
                 ]
             }

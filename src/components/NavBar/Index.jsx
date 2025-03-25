@@ -27,6 +27,8 @@ import {
 import { styled, alpha } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../utils/useAppContext';
+import { clearCredentials } from "../../features/auth/authSlice";
+import { useDispatch } from 'react-redux';
 
 // Estilos para el buscador
 const Search = styled('div')(({ theme }) => ({
@@ -82,10 +84,10 @@ const menuOptions = [
 
 export const NavBar = () => {
     const { manejarBusqueda } = useAppContext()
-
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const navigate = useNavigate();
+     const dispath = useDispatch()
 
     // Estado para el dropdown
     const [anchorEl, setAnchorEl] = useState(null);
@@ -113,6 +115,11 @@ export const NavBar = () => {
     const toggleMobileMenu = () => {
         setMobileMenuOpen(!mobileMenuOpen);
     };
+
+    //logout
+    const logOut = () => {
+            dispath(clearCredentials())
+    }
 
     return (
         <AppBar position="static" sx={{ backgroundColor: 'white', width: '100%', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
@@ -226,6 +233,18 @@ export const NavBar = () => {
                                         {option.label}
                                     </MenuItem>
                                 ))}
+                                                              <MenuItem
+                                    key={'logout'}
+                                    onClick={logOut}
+                                    sx={{
+                                        color: '#5e35b1',
+                                        '&:hover': {
+                                            backgroundColor: '#f9f4ff'
+                                        }
+                                    }}
+                                >
+                                    logout
+                                </MenuItem>
                             </Menu>
                         </>
                     )}
