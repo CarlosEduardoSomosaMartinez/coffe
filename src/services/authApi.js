@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { clearCredentials } from '../features/auth/authSlice';
-
+// true url https://6wqwjnilkygbweybic5ywpqmse0akwlt.lambda-url.us-east-1.on.aws
+// fake url https://lzqogg674ftg74ippdjunnhvdy0nbjyr.lambda-url.us-east-1.on.aws
 const baseQuery = fetchBaseQuery({
-    baseUrl: "https://lzqogg674ftg74ippdjunnhvdy0nbjyr.lambda-url.us-east-1.on.aws",
+    baseUrl: "https://6wqwjnilkygbweybic5ywpqmse0akwlt.lambda-url.us-east-1.on.aws",
     prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.token;
         if (token) {
